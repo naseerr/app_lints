@@ -1,0 +1,25 @@
+name: example
+description: Example app for testing app_lints rules.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.8
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_screenutil: ^5.9.3
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  custom_lint: ^0.8.1
+  app_lints:
+    path: ../
+
+analyzer:
+  plugins:
+    - custom_lint
