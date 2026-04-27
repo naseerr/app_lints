@@ -97,6 +97,26 @@ BorderRadius.circular(8.r)
 
 `SizedBox`, `EdgeInsets`, `EdgeInsetsDirectional`, `BorderRadius`, `Radius`, `Offset`, `Size`, `Padding`, `Icon`, `Divider`, `VerticalDivider`, `Gap`
 
+#### Excluding paths
+
+To suppress the rule for entire directories (e.g. providers, services, constants that use raw numbers legitimately), add an `exclude` list under the rule in `analysis_options.yaml`:
+
+```yaml
+custom_lint:
+  rules:
+    - prefer_screenutil:
+        exclude:
+          - lib/data/providers/**
+          - lib/common/services/**
+          - lib/common/constants/**
+```
+
+Glob wildcards supported:
+- `*` — matches any single path segment (no slashes)
+- `**` — matches any number of segments (any depth)
+
+Paths are matched relative to `lib/` so you don't need the full absolute path.
+
 ---
 
 ## Planned rules
