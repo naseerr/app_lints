@@ -4,6 +4,8 @@ A collection of custom lint rules for Flutter projects that enforce consistent u
 
 Rules are enforced as **errors** — they show up inline in your IDE and fail `dart run custom_lint`.
 
+> **Note:** This package currently uses [`custom_lint`](https://pub.dev/packages/custom_lint) as its plugin framework. The `custom_lint` repository was archived on Mar 24, 2026 and is no longer maintained. A migration to the official Dart team replacement [`analysis_server_plugin`](https://pub.dev/packages/analysis_server_plugin) is planned before `custom_lint` breaks with future Dart/analyzer versions.
+
 ---
 
 ## Requirements
