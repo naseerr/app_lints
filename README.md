@@ -99,23 +99,51 @@ BorderRadius.circular(8.r)
 
 #### Excluding paths
 
-To suppress the rule for entire directories (e.g. providers, services, constants that use raw numbers legitimately), add an `exclude` list under the rule in `analysis_options.yaml`:
+To suppress the rule for entire directories (e.g. providers, services, constants where numeric literals are business logic — timeouts, IDs, batch sizes — not UI sizes), add an `exclude` list as a **sibling key** to the rule name:
 
 ```yaml
 custom_lint:
   rules:
-    - prefer_screenutil:
-        exclude:
-          - lib/data/providers/**
-          - lib/common/services/**
-          - lib/common/constants/**
+    - prefer_screenutil: true
+      exclude:
+        - lib/data/**
+        - lib/core/services/**
+        - lib/core/repositories/**
+        - lib/features/**/*_provider.dart
 ```
+
+> **Critical:** `exclude` must be a sibling key at the same indent level as `prefer_screenutil: true`, NOT nested underneath it. The nested format is silently ignored by `custom_lint_builder`.
+>
+> ```yaml
+> # ✅ CORRECT
+> custom_lint:
+>   rules:
+>     - prefer_screenutil: true
+>       exclude:
+>         - lib/data/**
+>
+> # ❌ WRONG — silently ignored
+> custom_lint:
+>   rules:
+>     - prefer_screenutil:
+>         exclude:
+>           - lib/data/**
+> ```
 
 Glob wildcards supported:
 - `*` — matches any single path segment (no slashes)
 - `**` — matches any number of segments (any depth)
 
 Paths are matched relative to `lib/` so you don't need the full absolute path.
+
+For intentional absolute-pixel values (e.g. image export cards requiring exact pixel dimensions), use a per-line ignore instead:
+
+```dart
+SizedBox(
+  width: 1080, // ignore: prefer_screenutil
+  height: 1080, // ignore: prefer_screenutil
+)
+```
 
 ---
 

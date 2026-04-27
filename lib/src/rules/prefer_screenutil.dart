@@ -10,14 +10,15 @@ import 'package:custom_lint_builder/custom_lint_builder.dart';
 ///
 /// Excluded values: 0, -1, double.infinity (these have no screen-relative meaning).
 ///
-/// Optional path exclusions in analysis_options.yaml:
+/// Optional path exclusions in analysis_options.yaml.
+/// NOTE: exclude must be a sibling key, NOT nested under prefer_screenutil.
 /// ```yaml
 /// custom_lint:
 ///   rules:
-///     - prefer_screenutil:
-///         exclude:
-///           - lib/data/providers/**
-///           - lib/common/services/**
+///     - prefer_screenutil: true
+///       exclude:
+///         - lib/data/**
+///         - lib/core/services/**
 /// ```
 class PreferScreenUtil extends DartLintRule {
   const PreferScreenUtil({this.excludeGlobs = const []})
