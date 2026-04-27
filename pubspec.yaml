@@ -1,5 +1,5 @@
 name: app_lints
-description: Custom lint rules enforcing flutter_screenutil usage across Flutter apps.
+description: Custom lint rules enforcing flutter_screenutil, color constants, text styles, localization, and safe GetX usage across Flutter apps.
 version: 0.1.0
 
 environment:
